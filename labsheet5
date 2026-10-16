@@ -1,0 +1,296 @@
+print("\nQ1: Create and display a tuple")
+my_tuple = (10, 20, 30, 40, 50)
+
+print("Tuple:", my_tuple)
+
+
+
+print("\nQ2: Tuple with different data data types")
+my_tuple = (10, "Python", 3.14, True)
+
+print("Tuple:", my_tuple)
+
+
+
+
+print("\nQ3: length of a tuple")
+my_tuple = (10, 20, 30, 40, 50)
+
+print("Length of tuple:", len(my_tuple))
+
+
+
+print("\nQ4: Access tuple elements using indexing")
+my_tuple = (10, 20, 30, 40, 50)
+
+print("First element:", my_tuple[0])
+print("Third element:", my_tuple[2])
+print("Last element:", my_tuple[-1])
+
+
+
+print("\nQ5: Access tuple elements using slicing")
+my_tuple = (10, 20, 30, 40, 50)
+
+print("Elements from index 1 to 3:", my_tuple[1:4])
+print("First three elements:", my_tuple[:3])
+print("Last two elements:", my_tuple[-2:])
+
+
+
+
+print("\nQ6: Check whether an element exists in a tuple")
+my_tuple = (10, 20, 30, 40, 50)
+
+element = int(input("Enter element to search: "))
+
+if element in my_tuple:
+    print("Element exists in the tuple.")
+else:
+    print("Element does not exist in the tuple.")
+
+
+
+print("\nQ7: Count occurrences of an element")
+my_tuple = (10, 20, 10, 30, 10, 40)
+
+element = int(input("Enter element: "))
+
+print("Occurrences:", my_tuple.count(element))
+
+
+
+
+print("\nQ8: index of an element")
+my_tuple = (10, 20, 30, 40, 50)
+
+element = int(input("Enter element: "))
+
+if element in my_tuple:
+    print("Index of element:", my_tuple.index(element))
+else:
+    print("Element not found.")
+
+
+
+print("\nQ9: Concatenate two tuples")
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+
+result = tuple1 + tuple2
+
+print("Concatenated tuple:", result)
+
+
+
+print("\nQ10: Repeat a tuple n times")
+my_tuple = (1, 2, 3)
+
+n = int(input("Enter number of repetitions: "))
+
+result = my_tuple * n
+
+print("Repeated tuple:", result)
+
+
+
+print("\nQ11: Convert a list into a tuple")
+my_list = [10, 20, 30, 40, 50]
+
+my_tuple = tuple(my_list)
+
+print("List:", my_list)
+print("Tuple:", my_tuple)
+
+
+print("\nQ12:Convert a tuple into a string")
+my_tuple = ("Python", "is", "easy")
+
+my_string = " ".join(my_tuple)
+
+print("String:", my_string)
+
+
+
+print("\nQ13: Find maximum and minimum values")
+my_tuple = (25, 10, 45, 5, 30)
+
+print("Maximum value:", max(my_tuple))
+print("Minimum value:", min(my_tuple))
+
+
+
+
+print("\nQ14: sum of tuple elements")
+my_tuple = (10, 20, 30, 40, 50)
+
+total = sum(my_tuple)
+
+print("Sum:", total)
+
+
+
+
+print("\nQ15:Sort tuple of numbers")
+my_tuple = (50, 20, 40, 10, 30)
+
+sorted_tuple = tuple(sorted(my_tuple))
+
+print("Sorted tuple:", sorted_tuple)
+
+
+
+print("\nQ16: Sort tuple of strings alphabetically")
+my_tuple = ("Mango", "Apple", "Banana", "Orange")
+
+sorted_tuple = tuple(sorted(my_tuple))
+
+print("Alphabetically sorted tuple:", sorted_tuple)
+
+
+print("\nQ17: Reverse a tuple")
+my_tuple = (10, 20, 30, 40, 50)
+
+reversed_tuple = my_tuple[::-1]
+
+print("Reversed tuple:", reversed_tuple)
+
+
+
+print("\nQ18:two tuples are equal")
+tuple1 = (10, 20, 30)
+tuple2 = (10, 20, 30)
+
+if tuple1 == tuple2:
+    print("Both tuples are equal.")
+else:
+    print("Both tuples are not equal.")
+
+
+
+
+print("\nQ19:Remove duplicate elements from a tuple")
+my_tuple = (10, 20, 10, 30, 20, 40, 30)
+
+unique_tuple = tuple(dict.fromkeys(my_tuple))
+
+print("Original tuple:", my_tuple)
+print("Tuple after removing duplicates:", unique_tuple)
+
+
+
+print("\nQ20: Find length of the longest word")
+words = ("Python", "Programming", "MCA", "Computer")
+
+longest_word = max(words, key=len)
+
+print("Longest word:", longest_word)
+print("Length:", len(longest_word))
+
+
+
+print("\nQ21: Create and access a nested tuple")
+nested_tuple = ((1, 2), (3, 4), (5, 6))
+
+print("Nested tuple:", nested_tuple)
+print("First inner tuple:", nested_tuple[0])
+print("Element 4:", nested_tuple[1][1])
+
+
+
+print("\nQ22: Flatten a nested tuple")
+nested_tuple = ((1, 2), (3, 4), (5, 6))
+
+flat_tuple = tuple(item for sub_tuple in nested_tuple for item in sub_tuple)
+
+print("Flattened tuple:", flat_tuple)
+
+
+
+print("\nQ23: Swap two tuples ")
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+
+print("Before swapping:")
+print("Tuple 1:", tuple1)
+print("Tuple 2:", tuple2)
+
+tuple1, tuple2 = tuple2, tuple1
+
+print("After swapping:")
+print("Tuple 1:", tuple1)
+print("Tuple 2:", tuple2)
+
+
+
+print("\nQ24: Find common elements between two tuples")
+tuple1 = (10, 20, 30, 40)
+tuple2 = (30, 40, 50, 60)
+
+common = tuple(set(tuple1) & set(tuple2))
+
+print("Common elements:", common)
+
+
+
+print("\nQ25:  difference between two tuples")
+tuple1 = (10, 20, 30, 40)
+tuple2 = (30, 40, 50, 60)
+
+difference = tuple(x for x in tuple1 if x not in tuple2)
+
+print("Difference:", difference)
+
+
+
+print("\nQ26:Convert tuple of tuples into dictionary")
+data = (("Name", "Vishu"), ("Age", 22), ("Course", "MCA"))
+
+my_dict = dict(data)
+
+print("Dictionary:", my_dict)
+
+
+
+
+print("\nQ27:  Unzip a list of tuples")
+data = [("A", 10), ("B", 20), ("C", 30)]
+
+names, marks = zip(*data)
+
+names = list(names)
+marks = list(marks)
+
+print("Names:", names)
+print("Marks:", marks)
+
+
+
+print("\nQ28:Find repeated items")
+my_tuple = (10, 20, 10, 30, 20, 40, 10)
+
+repeated = tuple(x for x in set(my_tuple) if my_tuple.count(x) > 1)
+
+print("Repeated items:", repeated)
+
+
+
+print("\nQ29: Check whether all elements are the same")
+my_tuple = (5, 5, 5, 5, 5)
+
+if all(element == my_tuple[0] for element in my_tuple):
+    print("All elements are the same.")
+else:
+    print("All elements are not the same.")
+
+
+
+
+print("\nQ30: Find element-wise sum of two tuples")
+tuple1 = (10, 20, 30)
+tuple2 = (1, 2, 3)
+
+result = tuple(a + b for a, b in zip(tuple1, tuple2))
+
+print("Element-wise sum:", result)
+

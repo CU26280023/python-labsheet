@@ -1,0 +1,391 @@
+print("\nQ1: Add two integers")
+num1 = int(input("Enter first integer: "))
+num2 = int(input("Enter second integer: "))
+
+result = num1 + num2
+
+print("Sum =", result)
+
+
+
+print("\nQ2: substract two integers")
+num1 = int(input("Enter first integer: "))
+num2 = int(input("Enter second integer: "))
+
+result = num1 - num2
+
+print("Difference =", result)
+
+
+
+print("\nQ3: Multiply two integers")
+num1 = int(input("Enter first integer: "))
+num2 = int(input("Enter second integer: "))
+
+result = num1 * num2
+
+print("Product =", result)
+
+
+
+print("\nQ4: Quotient and remainder")
+num1 = int(input("Enter dividend: "))
+num2 = int(input("Enter divisor: "))
+
+if num2 == 0:
+    print("Division by zero is not allowed.")
+else:
+    quotient = num1 // num2
+    remainder = num1 % num2
+
+    print("Quotient =", quotient)
+    print("Remainder =", remainder)
+
+
+
+    print("\nQ5: Square and cube")
+    number = float(input("Enter a number: "))
+
+square = number ** 2
+cube = number ** 3
+
+print("Square =", square)
+print("Cube =", cube)
+
+
+
+print("\nQ6: Area of rectangle")
+length = float(input("Enter length: "))
+width = float(input("Enter width: "))
+
+area = length * width
+
+print("Area of rectangle =", area)
+
+
+
+print("\nQ7: Perimeter of circle")
+radius = float(input("Enter radius of the circle: "))
+
+pi = 3.14159
+perimeter = 2 * pi * radius
+
+print("Perimeter of circle =", perimeter)
+
+
+print("\nQ8: Swap using temporary variable")
+first = input("Enter first value: ")
+second = input("Enter second value: ")
+
+temp = first
+first = second
+second = temp
+
+print("After swapping:")
+print("First =", first)
+print("Second =", second)
+
+
+
+print("\nQ9: Swap without temporary variable")
+first = input("Enter first value: ")
+second = input("Enter second value: ")
+
+first, second = second, first
+
+print("After swapping:")
+print("First =", first)
+print("Second =", second)
+
+
+
+print("\nQ10: Celsius to Fahrenheit")
+celsius = float(input("Enter temperature in Celsius: "))
+
+fahrenheit = (celsius * 9 / 5) + 32
+
+print("Temperature in Fahrenheit =", fahrenheit)
+
+
+
+print("\nQ11: Fahrenheit to celsius")
+fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+
+celsius = (fahrenheit - 32) * 5 / 9
+
+print("Temperature in Celsius =", celsius)
+
+
+
+print("\nQ12: Simple interest")
+principal = float(input("Enter principal amount: "))
+rate = float(input("Enter rate of interest (% per year): "))
+time = float(input("Enter time in years: "))
+
+simple_interest = (principal * rate * time) / 100
+
+print("Simple Interest =", simple_interest)
+
+
+
+print("\nQ13: Compound interest")
+principal = float(input("Enter principal amount: "))
+rate = float(input("Enter annual rate of interest (%): "))
+time = float(input("Enter time in years: "))
+
+amount = principal * (1 + rate / 100) ** time
+compound_interest = amount - principal
+
+print("Compound Interest =", compound_interest)
+print("Total Amount =", amount)
+
+
+
+print("\nQ14: Average of three numbers")
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+num3 = float(input("Enter third number: "))
+
+average = (num1 + num2 + num3) / 3
+
+print("Average =", average)
+
+
+
+print("\nQ15: Kilometers to miles")
+kilometers = float(input("Enter distance in kilometers: "))
+
+miles = kilometers * 0.621371
+
+print("Distance in miles =", miles)
+
+
+
+print("\nQ16: Find remainder")
+number = int(input("Enter the number: "))
+divisor = int(input("Enter the divisor: "))
+
+if divisor == 0:
+    print("Division by zero is not allowed.")
+else:
+    remainder = number % divisor
+    print("Remainder =", remainder)
+
+
+
+print("\nQ17: Power without pow()")
+base = float(input("Enter the base: "))
+exponent = int(input("Enter a non-negative integer exponent: "))
+
+if exponent < 0:
+    print("Please enter a non-negative exponent.")
+else:
+    result = 1
+
+    for i in range(exponent):
+        result = result * base
+
+    print("Result =", result)
+
+
+
+    print("\nQ18: BMI")
+    weight = float(input("Enter weight in kilograms: "))
+height = float(input("Enter height in meters: "))
+
+if height <= 0:
+    print("Height must be greater than zero.")
+else:
+    bmi = weight / (height ** 2)
+
+    print("BMI =", round(bmi, 2))
+
+    if bmi < 18.5:
+        print("Category: Underweight")
+    elif bmi < 25:
+        print("Category: Normal weight")
+    elif bmi < 30:
+        print("Category: Overweight")
+    else:
+        print("Category: Obesity")
+
+
+
+        print("\nQ19: Monthly EMI")
+principal = float(input("Enter loan principal amount: "))
+annual_rate = float(input("Enter annual interest rate (%): "))
+years = float(input("Enter loan tenure in years: "))
+
+monthly_rate = annual_rate / (12 * 100)
+months = int(years * 12)
+
+if principal <= 0 or years <= 0:
+    print("Principal and tenure must be greater than zero.")
+elif monthly_rate == 0:
+    emi = principal / months
+    print("Monthly EMI =", round(emi, 2))
+else:
+    emi = (principal * monthly_rate * (1 + monthly_rate) ** months) / \
+          ((1 + monthly_rate) ** months - 1)
+
+    print("Monthly EMI =", round(emi, 2))
+
+
+
+    print("\nQ20: Percentage of 5 subjects")
+    total_marks = 0
+
+for i in range(1, 6):
+    marks = float(input(f"Enter marks obtained in subject {i}: "))
+    total_marks += marks
+
+percentage = (total_marks / 500) * 100
+
+print("Total Marks =", total_marks, "out of 500")
+print("Percentage =", percentage, "%")
+
+
+
+
+print("\nQ21: Positive or negative")
+total_marks = 0
+
+for i in range(1, 6):
+    marks = float(input(f"Enter marks obtained in subject {i}: "))
+    total_marks += marks
+
+percentage = (total_marks / 500) * 100
+
+print("Total Marks =", total_marks, "out of 500")
+print("Percentage =", percentage, "%")
+
+
+
+print("\nQ22: Even or odd")
+number = int(input("Enter an integer: "))
+
+if number % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")
+
+
+
+print("\nQ23: Divisible by 5")
+number = int(input("Enter an integer: "))
+
+if number % 5 == 0:
+    print("The number is divisible by 5.")
+else:
+    print("The number is not divisible by 5.")
+
+
+
+print("\nQ24: Leap year")
+year = int(input("Enter a year: "))
+
+if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
+    print(year, "is a leap year.")
+else:
+    print(year, "is not a leap year.")
+
+
+
+
+print("\nQ25: Largest of two numbers")
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+if num1 > num2:
+    largest = num1
+elif num2 > num1:
+    largest = num2
+else:
+    largest = num1
+    print("Both numbers are equal.")
+
+print("Largest =", largest) 
+
+
+
+print("\nQ26: Largest of three numbers")
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+num3 = float(input("Enter third number: "))
+
+if num1 >= num2 and num1 >= num3:
+    largest = num1
+elif num2 >= num1 and num2 >= num3:
+    largest = num2
+else:
+    largest = num3
+
+print("Largest =", largest)
+
+
+
+
+
+print("\nQ27: Vowel or consonant")
+character = input("Enter a single alphabet character: ")
+
+if len(character) != 1 or not (('a' <= character <= 'z') or
+                               ('A' <= character <= 'Z')):
+    print("Please enter a single alphabet character.")
+elif character.lower() in "aeiou":
+    print("The character is a vowel.")
+else:
+    print("The character is a consonant.")
+
+
+
+
+print("\nQ28: Uppercase,lowercase or digit")
+character = input("Enter a character: ")
+
+if len(character) != 1:
+    print("Please enter exactly one character.")
+elif 'A' <= character <= 'Z':
+    print("The character is uppercase.")
+elif 'a' <= character <= 'z':
+    print("The character is lowercase.")
+elif '0' <= character <= '9':
+    print("The character is a digit.")
+else:
+    print("The character is a special character.")  
+
+
+
+
+print("\nQ29: Number in a given range")
+number = float(input("Enter the number: "))
+lower = float(input("Enter lower limit: "))
+upper = float(input("Enter upper limit: "))
+
+if lower <= number <= upper:
+    print("The number is in the given range.")
+else:
+    print("The number is outside the given range.")
+
+
+
+
+print("\nQ30: Prime number") 
+number = int(input("Enter an integer: "))
+
+if number <= 1:
+    print("The number is not prime.")
+else:
+    is_prime = True
+    i = 2
+
+    while i * i <= number:
+        if number % i == 0:
+            is_prime = False
+            break
+        i += 1
+
+    if is_prime:
+        print("The number is prime.")
+    else:
+        print("The number is not prime.") 

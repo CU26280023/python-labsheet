@@ -1,0 +1,465 @@
+print("\nQ1: sum and average of elements")
+numbers = list(map(float, input("Enter list elements separated by spaces: ").split()))
+
+total = 0
+
+for number in numbers:
+    total += number
+
+average = total / len(numbers)
+
+print("List:", numbers)
+print("Sum:", total)
+print("Average:", average)
+
+
+
+print("\nQ2: rotate a list by n position")
+numbers = list(map(int, input("Enter list elements: ").split()))
+n = int(input("Enter number of positions to rotate: "))
+
+n = n % len(numbers)
+
+rotated_list = numbers[-n:] + numbers[:-n] if n != 0 else numbers
+
+print("Original List:", numbers)
+print("Rotated List:", rotated_list)
+
+
+
+print("\nQ3: Remove all negative numbers from a list")
+numbers = list(map(int, input("Enter list elements: ").split()))
+
+positive_list = []
+
+for number in numbers:
+    if number >= 0:
+        positive_list.append(number)
+
+print("Original List:", numbers)
+print("List after removing negative numbers:", positive_list)
+
+
+
+
+print("\nQ4:Find product of all elemnts in a list")
+numbers = list(map(int, input("Enter list elements: ").split()))
+
+product = 1
+
+for number in numbers:
+    product *= number
+
+print("List:", numbers)
+print("Product of all elements:", product)
+
+
+
+print("\nQ5: List of squares from 1 to n")
+n = int(input("Enter the value of n: "))
+
+squares = []
+
+for number in range(1, n + 1):
+    squares.append(number * number)
+
+print("List of squares:", squares)
+
+
+
+print("\nQ6: Split a list two halves")
+numbers = list(map(int, input("Enter list elements: ").split()))
+
+middle = len(numbers) // 2
+
+first_half = numbers[:middle]
+second_half = numbers[middle:]
+
+print("Original List:", numbers)
+print("First Half:", first_half)
+print("Second Half:", second_half)
+
+
+
+print("\nQ7: List in sorted")
+numbers = list(map(int, input("Enter list elements: ").split()))
+
+sorted_list = True
+
+for i in range(len(numbers) - 1):
+    if numbers[i] > numbers[i + 1]:
+        sorted_list = False
+        break
+
+if sorted_list:
+    print("The list is sorted.")
+else:
+    print("The list is not sorted.")
+
+
+
+print("\nQ8: Sum equals the target")
+numbers = list(map(int, input("Enter list elements: ").split()))
+target = int(input("Enter target sum: "))
+
+print("Pairs whose sum is", target, ":")
+
+found = False
+
+for i in range(len(numbers)):
+    for j in range(i + 1, len(numbers)):
+        if numbers[i] + numbers[j] == target:
+            print(numbers[i], "+", numbers[j], "=", target)
+            found = True
+
+if not found:
+    print("No pair found.")
+
+
+
+print("\nQ9:Flatten a nested list") 
+nested_list = [[1, 2], [3, 4], [5, 6]]
+
+flat_list = []
+
+for sub_list in nested_list:
+    for element in sub_list:
+        flat_list.append(element)
+
+print("Nested List:", nested_list)
+print("Flattened List:", flat_list)
+
+
+
+print("\nQ10:Convert a list into a string without using join()")
+items = input("Enter list elements separated by spaces: ").split()
+
+result = ""
+
+for item in items:
+    result = result + item + " "
+
+result = result.strip()
+
+print("List:", items)
+print("String:", result)
+
+
+
+
+print("\nQ11: Create and display student marks dictionary")
+students = {}
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    name = input("Enter student name: ")
+    marks = float(input("Enter marks: "))
+    students[name] = marks
+
+print("\nStudent Details:")
+for name, marks in students.items():
+    print(name, ":", marks)
+
+
+
+print("\nQ12: Maximum and minimum marks")
+marks = {"Rahul": 85, "Priya": 92, "Aman": 78, "Neha": 88}
+
+maximum = None
+minimum = None
+
+for value in marks.values():
+    if maximum is None or value > maximum:
+        maximum = value
+
+    if minimum is None or value < minimum:
+        minimum = value
+
+print("Marks:", marks)
+print("Maximum Marks:", maximum)
+print("Minimum Marks:", minimum)
+
+
+
+print("\nQ13: Count frequency of each character")
+text = input("Enter a string: ")
+
+frequency = {}
+
+for character in text:
+    if character in frequency:
+        frequency[character] += 1
+    else:
+        frequency[character] = 1
+
+print("Character Frequency:")
+
+for character, count in frequency.items():
+    print(character, ":", count)
+
+
+
+print("\nQ14: Merge two dictionaries")
+dict1 = {"a": 10, "b": 20}
+dict2 = {"c": 30, "d": 40}
+
+merged = {}
+
+for key, value in dict1.items():
+    merged[key] = value
+
+for key, value in dict2.items():
+    merged[key] = value
+
+print("Dictionary 1:", dict1)
+print("Dictionary 2:", dict2)
+print("Merged Dictionary:", merged)
+
+
+
+print("\nQ15: Sort dictionary by keys")
+data = {"banana": 20, "apple": 10, "orange": 30}
+
+sorted_data = dict(sorted(data.items()))
+
+print("Original Dictionary:", data)
+print("Dictionary sorted by keys:", sorted_data)
+
+
+
+
+print("nQ16:Sort dictionary by values")
+data = {"A": 50, "B": 20, "C": 40, "D": 10}
+
+sorted_data = dict(sorted(data.items(), key=lambda item: item[1]))
+
+print("Original Dictionary:", data)
+print("Dictionary sorted by values:", sorted_data)
+
+
+
+print("\nQ17: Update value of key")
+data = {"Name": "Rahul", "Age": 20, "Marks": 80}
+
+key = input("Enter key to update: ")
+
+if key in data:
+    new_value = input("Enter new value: ")
+    data[key] = new_value
+    print("Dictionary after update:", data)
+else:
+    print("Key not found.")
+
+
+
+print("\nQ18: Remove a key from dictionary")
+data = {"Name": "Rahul", "Age": 20, "Marks": 80}
+
+key = input("Enter key to remove: ")
+
+if key in data:
+    del data[key]
+    print("Dictionary after removing key:", data)
+else:
+    print("Key not found.")
+
+
+
+print("\nQ19: Check whether a key exists")
+data = {"Name": "Rahul", "Age": 20, "Marks": 80}
+
+key = input("Enter key to search: ")
+
+if key in data:
+    print("Key exists in the dictionary.")
+else:
+    print("Key does not exist in the dictionary.")
+
+
+
+
+print("\nQ20: Sum of dictionary values")
+data = {"A": 10, "B": 20, "C": 30, "D": 40}
+
+total = 0
+
+for value in data.values():
+    total += value
+
+print("Dictionary:", data)
+print("Sum of all values:", total)
+
+
+
+print("\nQ21: Key having maximum value")
+data = {"A": 25, "B": 70, "C": 45, "D": 90}
+
+maximum = None
+maximum_key = None
+
+for key, value in data.items():
+    if maximum is None or value > maximum:
+        maximum = value
+        maximum_key = key
+
+print("Dictionary:", data)
+print("Key with maximum value:", maximum_key)
+print("Maximum value:", maximum)
+
+
+
+
+print("\nQ22: Dictionary of numbers and their square")
+n = int(input("Enter value of n: "))
+
+squares = {}
+
+for number in range(1, n + 1):
+    squares[number] = number * number
+
+print("Dictionary:", squares)
+
+
+
+
+print("\nQ23: Convert two lists into a dictionary")
+keys = input("Enter keys separated by spaces: ").split()
+values = input("Enter values separated by spaces: ").split()
+
+if len(keys) == len(values):
+    data = {}
+
+    for i in range(len(keys)):
+        data[keys[i]] = values[i]
+
+    print("Dictionary:", data)
+else:
+    print("Both lists must have equal number of elements.")
+
+
+
+
+print("\nQ24: Invert dictionary")
+data = {"A": 1, "B": 2, "C": 3}
+
+inverted = {}
+
+for key, value in data.items():
+    inverted[value] = key
+
+print("Original Dictionary:", data)
+print("Inverted Dictionary:", inverted)
+
+
+
+
+print("\nQ25: Count frequency of words in a paragraph")
+paragraph = input("Enter a paragraph: ")
+
+words = paragraph.lower().split()
+
+frequency = {}
+
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
+    else:
+        frequency[word] = 1
+
+print("\nWord Frequency:")
+
+for word, count in frequency.items():
+    print(word, ":", count)
+
+
+
+print("\nQ26: two dictionaries are equal")
+dict1 = {"A": 10, "B": 20}
+dict2 = {"A": 10, "B": 20}
+
+if dict1 == dict2:
+    print("Both dictionaries are equal.")
+else:
+    print("Both dictionaries are not equal.")
+
+
+
+print("\nQ27: Remove duplicate values from dictionary")
+data = {
+    "A": 10,
+    "B": 20,
+    "C": 10,
+    "D": 30,
+    "E": 20
+}
+
+result = {}
+
+for key, value in data.items():
+    if value not in result.values():
+        result[key] = value
+
+print("Original Dictionary:", data)
+print("After removing duplicate values:", result)
+
+
+
+
+print("\nQ28: Nested dictionary for student details")
+students = {}
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    roll = input("\nEnter roll number: ")
+    name = input("Enter name: ")
+    marks = float(input("Enter marks: "))
+
+    students[roll] = {
+        "Name": name,
+        "Roll": roll,
+        "Marks": marks
+    }
+
+print("\nStudent Details:")
+
+for roll, details in students.items():
+    print(details)
+
+
+
+
+print("\nQ29: commen keys between two dictionaries")
+dict1 = {"A": 10, "B": 20, "C": 30}
+dict2 = {"B": 40, "C": 50, "D": 60}
+
+common_keys = []
+
+for key in dict1:
+    if key in dict2:
+        common_keys.append(key)
+
+print("Dictionary 1:", dict1)
+print("Dictionary 2:", dict2)
+print("Common Keys:", common_keys)
+
+
+
+
+print("\nQ30: Create dictionary with characters and their frequency")
+text = input("Enter a string: ")
+
+character_frequency = {}
+
+for character in text:
+    if character in character_frequency:
+        character_frequency[character] += 1
+    else:
+        character_frequency[character] = 1
+
+print("String:", text)
+print("Character Frequency Dictionary:")
+
+for character, frequency in character_frequency.items():
+    print(character, ":", frequency)
