@@ -1,0 +1,531 @@
+print("\nQ1:Create and write text into a file")
+file = open("sample.txt", "w")
+
+file.write("Hello Python Programming\n")
+file.write("Welcome to File Handling")
+
+file.close()
+
+print("Data written successfully!")
+
+
+
+
+print("\nQ2: Read entire content of a file")
+file = open("sample.txt", "r")
+content = file.read()
+print("Content of the file:")
+print(content)
+file.close()
+
+
+
+
+print("\nQ3: Read a file line by line")
+file = open("sample.txt", "r")
+for line in file:
+    print(line)
+file.close()
+
+
+
+
+print("\nQ4: count words in a file")
+file = open("sample.txt", "r")
+content = file.read()
+words = content.split()
+print("Number of words in the file:", len(words))
+file.close()
+
+
+
+
+print("\nQ5: count lines and characters in a file")
+file = open("sample.txt", "r")
+
+content = file.read()
+
+lines = content.splitlines()
+
+print("Total Lines:", len(lines))
+print("Total Characters:", len(content))
+
+file.close()
+
+
+
+print("\nQ6: Display even numbered lines")
+file = open("sample.txt", "r")
+
+for line_number, line in enumerate(file, start=1):
+    if line_number % 2 == 0:
+        print(line.strip())
+
+file.close()
+
+
+
+print("\nQ7: Write multiple lines into a file")
+file = open("user.txt", "w")
+
+n = int(input("Enter number of lines: "))
+
+for i in range(n):
+    line = input("Enter line: ")
+    file.write(line + "\n")
+
+file.close()
+
+print("Lines saved successfully!")
+
+
+
+
+print("\nQ8:Append content to existing file")
+file = open("sample.txt", "a")
+
+file.write("\nThis is appended content.")
+
+file.close()
+
+print("Content appended successfully!")
+
+
+
+print("\nQ9:Copy content from one file to another")
+file1 = open("sample.txt", "r")
+
+data = file1.read()
+
+file1.close()
+
+file2 = open("copy.txt", "w")
+
+file2.write(data)
+
+file2.close()
+
+print("File copied successfully!")
+
+
+
+print("\nQ10:Convert file content into uppercase")
+file = open("sample.txt", "r")
+
+content = file.read()
+
+print(content.upper())
+
+file.close()
+
+
+
+print("\nQ11:Search a particular word in a file")
+file = open("sample.txt", "r")
+
+content = file.read()
+
+word = input("Enter word to search: ")
+
+if word.lower() in content.lower():
+    print("Word found in file!")
+else:
+    print("Word not found!")
+
+file.close()
+
+
+
+print("\nQ12:Count occurrence of a word")
+file = open("sample.txt", "r")
+
+content = file.read()
+
+word = input("Enter word: ")
+
+count = content.lower().split().count(word.lower())
+
+print("Word occurrence:", count)
+
+file.close()
+
+
+
+print("\nQ13:Calculate sum and average of numbers")
+file = open("numbers.txt", "r")
+
+numbers = list(map(int, file.read().split()))
+
+total = sum(numbers)
+
+average = total / len(numbers)
+
+print("Sum:", total)
+print("Average:", average)
+
+file.close()
+
+
+
+print("\nQ14:Find longest line in a file")
+file = open("sample.txt", "r")
+
+lines = file.readlines()
+
+longest = max(lines, key=len)
+
+print("Longest line:")
+print(longest)
+
+file.close()
+
+
+
+print("\nQ15:Replace a word in a file")
+file = open("sample.txt", "r")
+
+content = file.read()
+
+file.close()
+
+old_word = input("Enter old word: ")
+new_word = input("Enter new word: ")
+
+content = content.replace(old_word, new_word)
+
+file = open("sample.txt", "w")
+
+file.write(content)
+
+file.close()
+
+print("Word replaced successfully!")
+
+
+print("\nQ16:Display first and last lines of a file")
+file = open("sample.txt", "r")
+
+lines = file.readlines()
+
+if len(lines) > 0:
+    print("First line:", lines[0].strip())
+    print("Last line:", lines[-1].strip())
+else:
+    print("File is empty")
+
+file.close()
+
+
+
+
+print("\nQ17:Remove blank lines from a file")
+file = open("sample.txt", "r")
+
+lines = file.readlines()
+
+file.close()
+
+file = open("sample.txt", "w")
+
+for line in lines:
+    if line.strip():
+        file.write(line)
+
+file.close()
+
+print("Blank lines removed successfully!")
+
+
+
+
+print("\nQ18:Store unique words in another file")
+file = open("sample.txt", "r")
+
+words = file.read().split()
+
+file.close()
+
+unique = []
+
+for word in words:
+    if word not in unique:
+        unique.append(word)
+
+file = open("unique.txt", "w")
+
+for word in unique:
+    file.write(word + "\n")
+
+file.close()
+
+print("Unique words saved successfully!")
+
+
+
+
+print("\nQ19:Sort words alphabetically")
+file = open("sample.txt", "r")
+
+words = file.read().split()
+
+file.close()
+
+words.sort()
+
+file = open("sorted.txt", "w")
+
+for word in words:
+    file.write(word + "\n")
+
+file.close()
+
+print("Words sorted successfully!")
+
+
+
+
+print("\nQ20:Merge two text files into third file")
+file1 = open("file1.txt", "r")
+
+data1 = file1.read()
+
+file1.close()
+
+file2 = open("file2.txt", "r")
+
+data2 = file2.read()
+
+file2.close()
+
+file3 = open("file3.txt", "w")
+
+file3.write(data1 + "\n" + data2)
+
+file3.close()
+
+print("Files merged successfully!")
+
+
+
+
+print("\nQ21:Create and write data into CSV file")
+import csv
+
+file = open("students.csv", "w", newline="")
+
+writer = csv.writer(file)
+
+writer.writerow(["Name", "Roll No", "Marks"])
+
+writer.writerow(["Aman", 101, 85])
+writer.writerow(["Riya", 102, 90])
+writer.writerow(["Rahul", 103, 78])
+
+file.close()
+
+print("CSV file created successfully!")
+
+
+
+
+print("\nQ22:Read data from CSV file")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.reader(file)
+
+for row in reader:
+    print(row)
+
+file.close()
+
+
+
+
+print("\nQ23:Calculate average of marks from CSV file")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.DictReader(file)
+
+total = 0
+count = 0
+
+for row in reader:
+    total += int(row["Marks"])
+    count += 1
+
+if count > 0:
+    average = total / count
+    print("Average Marks:", average)
+else:
+    print("No records found")
+
+file.close()
+
+
+
+
+print("\nQ24:Count rows and columns in CSV file")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.reader(file)
+
+data = list(reader)
+
+rows = len(data) - 1
+
+columns = len(data[0]) if data else 0
+
+print("Total Rows:", rows)
+print("Total Columns:", columns)
+
+file.close()
+
+
+
+
+print("\nQ25:Append new record into CSV file")
+import csv
+
+file = open("students.csv", "a", newline="")
+
+writer = csv.writer(file)
+
+name = input("Enter student name: ")
+roll = input("Enter roll number: ")
+marks = input("Enter marks: ")
+
+writer.writerow([name, roll, marks])
+
+file.close()
+
+print("Record added successfully!")
+
+
+
+
+print("\nQ26:Copy data from one CSV file to another")
+import csv
+
+file1 = open("students.csv", "r")
+
+reader = csv.reader(file1)
+
+data = list(reader)
+
+file1.close()
+
+file2 = open("copy.csv", "w", newline="")
+
+writer = csv.writer(file2)
+
+writer.writerows(data)
+
+file2.close()
+
+print("CSV data copied successfully!")
+
+
+
+
+print("\nQ27:Display Name and Marks columns")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.DictReader(file)
+
+for row in reader:
+    print("Name:", row["Name"])
+    print("Marks:", row["Marks"])
+
+file.close()
+
+
+
+print("\nQ28:Find highest marks from CSV file")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.DictReader(file)
+
+highest = 0
+student = ""
+
+for row in reader:
+    marks = int(row["Marks"])
+
+    if marks > highest:
+        highest = marks
+        student = row["Name"]
+
+print("Highest Marks:", highest)
+print("Student Name:", student)
+
+file.close()
+
+
+
+print("\nQ29:Search student record using name")
+import csv
+
+file = open("students.csv", "r")
+
+reader = csv.DictReader(file)
+
+name = input("Enter student name: ")
+
+found = False
+
+for row in reader:
+    if row["Name"].lower() == name.lower():
+        print("Student Record Found")
+        print(row)
+        found = True
+
+if not found:
+    print("Student not found")
+
+file.close()
+
+
+
+
+print("\nQ30:Combine multiple CSV files into one file")
+
+import csv
+
+files = ["students1.csv", "students2.csv"]
+
+output = open("combined.csv", "w", newline="")
+
+writer = csv.writer(output)
+
+header_written = False
+
+for filename in files:
+
+    file = open(filename, "r")
+
+    reader = csv.reader(file)
+
+    header = next(reader, None)
+
+    if header and not header_written:
+        writer.writerow(header)
+        header_written = True
+
+    for row in reader:
+        writer.writerow(row)
+
+    file.close()
+
+output.close()
+
+print("CSV files combined successfully!")

@@ -1,0 +1,979 @@
+print("\nQ1:connect_database.py")
+import sqlite3
+
+try:
+    # Connect to database
+    conn = sqlite3.connect("student_db.db")
+
+    print("Database connected successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+
+
+print("\nQ2:create_database.py")  
+import sqlite3
+
+try:
+    # Create a new database
+    conn = sqlite3.connect("student_db.db")
+
+    print("Database created successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ3:create_table.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Create students table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS students (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            age INTEGER,
+            marks REAL
+        )
+    """)
+
+    conn.commit()
+
+    print("Students table created successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+print("\nQ4:describe_table.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("PRAGMA table_info(students)")
+
+    columns = cursor.fetchall()
+
+    print("Students Table Structure:")
+
+    for column in columns:
+        print(column)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ5:list_tables.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT name FROM sqlite_master
+        WHERE type='table'
+    """)
+
+    tables = cursor.fetchall()
+
+    print("Available Tables:")
+
+    for table in tables:
+        print(table[0])
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ6:drop_table.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS students")
+
+    conn.commit()
+
+    print("Students table deleted successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)  
+
+
+
+
+
+print("\nQ7:check_table.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT name FROM sqlite_master
+        WHERE type='table' AND name=?
+    """, ("students",))
+
+    result = cursor.fetchone()
+
+    if result:
+        print("Students table exists.")
+
+    else:
+        print("Students table does not exist.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+
+print("\nQ8:insert_single.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Insert one student
+    cursor.execute("""
+        INSERT INTO students (id, name, age, marks)
+        VALUES (?, ?, ?, ?)
+    """, (1, "Rahul", 22, 85))
+
+    conn.commit()
+
+    print("Record inserted successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ9:insert_multiple.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    students = [
+        (2, "Aman", 21, 90),
+        (3, "Priya", 22, 95),
+        (4, "Neha", 23, 75),
+        (5, "Rohit", 21, 60)
+    ]
+
+    cursor.executemany("""
+        INSERT INTO students (id, name, age, marks)
+        VALUES (?, ?, ?, ?)
+    """, students)
+
+    conn.commit()
+
+    print("Multiple records inserted successfully!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)     
+
+
+
+
+print("\nQ10:display_records.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM students")
+
+    records = cursor.fetchall()
+
+    print("All Student Records:")
+
+    for row in records:
+        print(row)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ11:specific_columns.py")  
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT name, marks FROM students")
+
+    records = cursor.fetchall()
+
+    for row in records:
+        print("Name:", row[0], "Marks:", row[1])
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ12:marks_greater_80.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM students WHERE marks > 80")
+
+    records = cursor.fetchall()
+
+    print("Students scoring above 80:")
+
+    for row in records:
+        print(row)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ13:sort_marks.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT * FROM students
+        ORDER BY marks DESC
+    """)
+
+    records = cursor.fetchall()
+
+    print("Students in descending order of marks:")
+
+    for row in records:
+        print(row)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+print("\nQ14:count_records.py")  
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM students")
+
+    count = cursor.fetchone()[0]
+
+    print("Total number of students:", count)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ15:top_three.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT * FROM students
+        ORDER BY marks DESC
+        LIMIT 3
+    """)
+
+    records = cursor.fetchall()
+
+    print("Top 3 Students:")
+
+    for row in records:
+        print(row)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e) 
+
+
+
+print("\nQ16:update_marks.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Take student ID and new marks
+    student_id = int(input("Enter Student ID: "))
+    new_marks = float(input("Enter New Marks: "))
+
+    # Update student marks
+    cursor.execute("""
+        UPDATE students
+        SET marks = ?
+        WHERE id = ?
+    """, (new_marks, student_id))
+
+    conn.commit()
+
+    if cursor.rowcount > 0:
+        print("Student marks updated successfully!")
+    else:
+        print("Student ID not found.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+except ValueError:
+    print("Please enter valid numeric values.")
+
+
+
+print("\nQ17:update_name.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    student_id = int(input("Enter Student ID: "))
+    new_name = input("Enter New Name: ")
+
+    cursor.execute("""
+        UPDATE students
+        SET name = ?
+        WHERE id = ?
+    """, (new_name, student_id))
+
+    conn.commit()
+
+    if cursor.rowcount > 0:
+        print("Student name updated successfully!")
+    else:
+        print("Student ID not found.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+except ValueError:
+    print("Invalid input!")
+
+
+
+
+print("delete_student.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    student_id = int(input("Enter Student ID to delete: "))
+
+    cursor.execute("""
+        DELETE FROM students
+        WHERE id = ?
+    """, (student_id,))
+
+    conn.commit()
+
+    if cursor.rowcount > 0:
+        print("Student deleted successfully!")
+    else:
+        print("Student ID not found.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+except ValueError:
+    print("Invalid ID!") 
+
+
+
+
+print("\nQ19:delete_below_40.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        DELETE FROM students
+        WHERE marks < 40
+    """)
+
+    conn.commit()
+
+    print("Students with marks below 40 deleted!")
+    print("Deleted records:", cursor.rowcount)
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ20:truncate_table.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # SQLite does not support TRUNCATE TABLE.
+    # DELETE removes all records but keeps the table structure.
+    cursor.execute("DELETE FROM students")
+
+    conn.commit()
+
+    print("All records deleted successfully!")
+    print("Table structure remains unchanged.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ21:create_courses.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Create courses table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS courses (
+            course_id INTEGER PRIMARY KEY,
+            course_name TEXT
+        )
+    """)
+
+    # Add course_id to students table for JOIN
+    columns = [
+        row[1] for row in cursor.execute(
+            "PRAGMA table_info(students)"
+        ).fetchall()
+    ]
+
+    if "course_id" not in columns:
+        cursor.execute("""
+            ALTER TABLE students
+            ADD COLUMN course_id INTEGER
+        """)
+
+    # Insert course records
+    courses = [
+        (101, "Python"),
+        (102, "Java"),
+        (103, "DBMS")
+    ]
+
+    cursor.executemany("""
+        INSERT OR IGNORE INTO courses
+        (course_id, course_name)
+        VALUES (?, ?)
+    """, courses)
+
+    conn.commit()
+
+    print("Courses table created and data inserted!")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ22:inner_join.py") 
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT students.name, courses.course_name
+        FROM students
+        INNER JOIN courses
+        ON students.course_id = courses.course_id
+    """)
+
+    records = cursor.fetchall()
+
+    print("INNER JOIN Result:")
+
+    for row in records:
+        print("Student:", row[0], "Course:", row[1])
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ23:left_join.py")  
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT students.name, courses.course_name
+        FROM students
+        LEFT JOIN courses
+        ON students.course_id = courses.course_id
+    """)
+
+    records = cursor.fetchall()
+
+    print("LEFT JOIN Result:")
+
+    for row in records:
+        print("Student:", row[0], "Course:", row[1])
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ24:average_marks.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT AVG(marks) FROM students")
+
+    average = cursor.fetchone()[0]
+
+    if average is not None:
+        print("Average Marks:", round(average, 2))
+    else:
+        print("No student records available.")
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ25:group_by_age.py")
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT age, COUNT(*)
+        FROM students
+        GROUP BY age
+    """)
+
+    records = cursor.fetchall()
+
+    print("Students Grouped by Age:")
+
+    for row in records:
+        print("Age:", row[0], "Count:", row[1])
+
+    conn.close()
+
+except sqlite3.Error as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ26:export_csv.py") 
+import sqlite3
+import csv
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM students")
+
+    records = cursor.fetchall()
+
+    # Get column names
+    headers = [description[0] for description in cursor.description]
+
+    # Write data into CSV file
+    with open("students.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+
+        writer.writerow(headers)
+        writer.writerows(records)
+
+    print("Data exported to students.csv successfully!")
+
+    conn.close()
+
+except (sqlite3.Error, OSError) as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ27:import_csv.py") 
+import sqlite3
+import csv
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Read CSV file
+    with open("students.csv", "r") as file:
+        reader = csv.reader(file)
+
+        next(reader)  # Skip header
+
+        records = [
+            (int(row[0]), row[1], int(row[2]), float(row[3]))
+            for row in reader
+        ]
+
+    # Insert CSV records into database
+    cursor.executemany("""
+        INSERT INTO students (id, name, age, marks)
+        VALUES (?, ?, ?, ?)
+    """, records)
+
+    conn.commit()
+
+    print("CSV data imported successfully!")
+
+    conn.close()
+
+except (sqlite3.Error, OSError, ValueError) as e:
+    print("Error:", e)
+
+
+
+
+
+print("\nQ28:database_errors.py")  
+import sqlite3
+
+try:
+    conn = sqlite3.connect("student_db.db")
+    cursor = conn.cursor()
+
+    # Execute SQL query
+    cursor.execute("SELECT * FROM students")
+
+    records = cursor.fetchall()
+
+    for row in records:
+        print(row)
+
+    conn.close()
+
+except sqlite3.IntegrityError as e:
+    print("Integrity Error:", e)
+
+except sqlite3.OperationalError as e:
+    print("Operational Error:", e)
+
+except sqlite3.DatabaseError as e:
+    print("Database Error:", e)
+
+except sqlite3.Error as e:
+    print("Other SQLite Error:", e)
+
+
+
+
+print("\nQ29:functions_database.py")
+import sqlite3
+
+# Function to insert student data
+def insert_student(name, age, marks):
+
+    try:
+        conn = sqlite3.connect("student_db.db")
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            INSERT INTO students (name, age, marks)
+            VALUES (?, ?, ?)
+        """, (name, age, marks))
+
+        conn.commit()
+
+        print("Student inserted successfully!")
+
+        conn.close()
+
+    except sqlite3.Error as e:
+        print("Error:", e)
+
+
+# Function to fetch student data
+def fetch_students():
+
+    try:
+        conn = sqlite3.connect("student_db.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM students")
+
+        records = cursor.fetchall()
+
+        print("Student Records:")
+
+        for row in records:
+            print(row)
+
+        conn.close()
+
+    except sqlite3.Error as e:
+        print("Error:", e)
+
+
+# Main program
+insert_student("Vikas", 22, 88)
+
+fetch_students()
+
+
+
+
+
+print("\nQ30:student_management.py")
+import sqlite3
+
+# Connect to database
+def connect_db():
+    return sqlite3.connect("student_db.db")
+
+
+# Function to add student
+def add_student():
+
+    try:
+        conn = connect_db()
+        cursor = conn.cursor()
+
+        name = input("Enter Student Name: ")
+        age = int(input("Enter Age: "))
+        marks = float(input("Enter Marks: "))
+
+        cursor.execute("""
+            INSERT INTO students (name, age, marks)
+            VALUES (?, ?, ?)
+        """, (name, age, marks))
+
+        conn.commit()
+
+        print("Student added successfully!")
+
+        conn.close()
+
+    except (sqlite3.Error, ValueError) as e:
+        print("Error:", e)
+
+
+# Function to view students
+def view_students():
+
+    try:
+        conn = connect_db()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM students")
+
+        records = cursor.fetchall()
+
+        print("\nStudent Records:")
+
+        for row in records:
+            print(row)
+
+        conn.close()
+
+    except sqlite3.Error as e:
+        print("Error:", e)
+
+
+# Function to update student
+def update_student():
+
+    try:
+        conn = connect_db()
+        cursor = conn.cursor()
+
+        student_id = int(input("Enter Student ID: "))
+        marks = float(input("Enter New Marks: "))
+
+        cursor.execute("""
+            UPDATE students
+            SET marks = ?
+            WHERE id = ?
+        """, (marks, student_id))
+
+        conn.commit()
+
+        if cursor.rowcount > 0:
+            print("Student updated successfully!")
+        else:
+            print("Student not found!")
+
+        conn.close()
+
+    except (sqlite3.Error, ValueError) as e:
+        print("Error:", e)
+
+
+# Function to delete student
+def delete_student():
+
+    try:
+        conn = connect_db()
+        cursor = conn.cursor()
+
+        student_id = int(input("Enter Student ID: "))
+
+        cursor.execute("""
+            DELETE FROM students
+            WHERE id = ?
+        """, (student_id,))
+
+        conn.commit()
+
+        if cursor.rowcount > 0:
+            print("Student deleted successfully!")
+        else:
+            print("Student not found!")
+
+        conn.close()
+
+    except (sqlite3.Error, ValueError) as e:
+        print("Error:", e)
+
+
+# Main menu
+while True:
+
+    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Update Student")
+    print("4. Delete Student")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_student()
+
+    elif choice == "2":
+        view_students()
+
+    elif choice == "3":
+        update_student()
+
+    elif choice == "4":
+        delete_student()
+
+    elif choice == "5":
+        print("Thank you for using Student Management System!")
+        break
+
+    else:
+        print("Invalid choice! Please try again.")
+
+
+

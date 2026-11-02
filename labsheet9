@@ -1,0 +1,857 @@
+print("\nQ1:Create a list of student records")
+students = []
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    roll = int(input("Enter Roll Number: "))
+    name = input("Enter Student Name: ")
+    marks = float(input("Enter Marks: "))
+
+    student = {
+        "roll": roll,
+        "name": name,
+        "marks": marks
+    }
+
+    students.append(student)
+
+print("\nStudent Records Created Successfully!")
+print(students)
+
+
+
+
+
+print("\nQ2:Display all student records")
+students = [
+    {"roll": 1, "name": "Rahul", "marks": 85},
+    {"roll": 2, "name": "Priya", "marks": 90},
+    {"roll": 3, "name": "Aman", "marks": 78}
+]
+
+print("All Student Records:")
+
+for student in students:
+    print(student)
+
+
+
+
+print("\nQ3:Search student by name")
+students = [
+    {"roll": 1, "name": "Rahul", "marks": 85},
+    {"roll": 2, "name": "Priya", "marks": 90},
+    {"roll": 3, "name": "Aman", "marks": 78}
+]
+
+search_name = input("Enter student name to search: ")
+
+found = False
+
+for student in students:
+    if student["name"].lower() == search_name.lower():
+        print("Student Found!")
+        print(student)
+        found = True
+
+if not found:
+    print("Student Not Found!")
+
+
+
+
+print("\nQ4:Update student marks")
+students = [
+    {"roll": 1, "name": "Rahul", "marks": 85},
+    {"roll": 2, "name": "Priya", "marks": 90}
+]
+
+roll = int(input("Enter Roll Number: "))
+
+found = False
+
+for student in students:
+    if student["roll"] == roll:
+        new_marks = float(input("Enter New Marks: "))
+        student["marks"] = new_marks
+
+        print("Marks Updated Successfully!")
+        print(student)
+        found = True
+        break
+
+if not found:
+    print("Student Not Found!")
+
+
+
+
+print("\nQ5:Delete student record")
+students = [
+    {"roll": 1, "name": "Rahul", "marks": 85},
+    {"roll": 2, "name": "Priya", "marks": 90}
+]
+
+roll = int(input("Enter Roll Number to Delete: "))
+
+found = False
+
+for student in students:
+    if student["roll"] == roll:
+        students.remove(student)
+        print("Record Deleted Successfully!")
+        found = True
+        break
+
+if not found:
+    print("Student Not Found!")
+
+print("Remaining Records:")
+print(students)
+
+
+
+
+print("\nQ6:CRUD operations on employee dictionary")
+
+employees = {}
+
+while True:
+    print("\n1. Add Employee")
+    print("2. View Employees")
+    print("3. Update Employee")
+    print("4. Delete Employee")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        emp_id = input("Enter Employee ID: ")
+        name = input("Enter Employee Name: ")
+        salary = float(input("Enter Salary: "))
+
+        employees[emp_id] = {
+            "name": name,
+            "salary": salary
+        }
+
+        print("Employee Added Successfully!")
+
+    elif choice == "2":
+        if employees:
+            for emp_id, details in employees.items():
+                print(emp_id, details)
+        else:
+            print("No Employee Records Found!")
+
+    elif choice == "3":
+        emp_id = input("Enter Employee ID: ")
+
+        if emp_id in employees:
+            employees[emp_id]["salary"] = float(
+                input("Enter New Salary: ")
+            )
+            print("Employee Updated Successfully!")
+        else:
+            print("Employee Not Found!")
+
+    elif choice == "4":
+        emp_id = input("Enter Employee ID: ")
+
+        if emp_id in employees:
+            del employees[emp_id]
+            print("Employee Deleted Successfully!")
+        else:
+            print("Employee Not Found!")
+
+    elif choice == "5":
+        break
+
+    else:
+        print("Invalid Choice!")
+
+
+
+
+print("\nQ7:CRUD operations on books")
+
+books = []
+
+while True:
+    print("\n1. Add Book")
+    print("2. View Books")
+    print("3. Update Book")
+    print("4. Delete Book")
+    print("5. Exit")
+
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        book_id = input("Enter Book ID: ")
+        name = input("Enter Book Name: ")
+        author = input("Enter Author Name: ")
+
+        books.append({
+            "id": book_id,
+            "name": name,
+            "author": author
+        })
+
+        print("Book Added Successfully!")
+
+    elif choice == "2":
+        for book in books:
+            print(book)
+
+    elif choice == "3":
+        book_id = input("Enter Book ID: ")
+        found = False
+
+        for book in books:
+            if book["id"] == book_id:
+                book["name"] = input("Enter New Book Name: ")
+                book["author"] = input("Enter New Author: ")
+                print("Book Updated Successfully!")
+                found = True
+                break
+
+        if not found:
+            print("Book Not Found!")
+
+    elif choice == "4":
+        book_id = input("Enter Book ID: ")
+        found = False
+
+        for book in books:
+            if book["id"] == book_id:
+                books.remove(book)
+                print("Book Deleted Successfully!")
+                found = True
+                break
+
+        if not found:
+            print("Book Not Found!")
+
+    elif choice == "5":
+        break
+
+    else:
+        print("Invalid Choice!")
+
+
+
+
+print("\nQ8:CRUD operations on products")
+
+products = {}
+
+while True:
+    print("\n1. Add Product")
+    print("2. View Products")
+    print("3. Update Product")
+    print("4. Delete Product")
+    print("5. Exit")
+
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        pid = input("Enter Product ID: ")
+        name = input("Enter Product Name: ")
+        price = float(input("Enter Product Price: "))
+
+        products[pid] = {
+            "name": name,
+            "price": price
+        }
+
+        print("Product Added Successfully!")
+
+    elif choice == "2":
+        for pid, details in products.items():
+            print(pid, details)
+
+    elif choice == "3":
+        pid = input("Enter Product ID: ")
+
+        if pid in products:
+            products[pid]["price"] = float(
+                input("Enter New Price: ")
+            )
+            print("Product Updated Successfully!")
+        else:
+            print("Product Not Found!")
+
+    elif choice == "4":
+        pid = input("Enter Product ID: ")
+
+        if pid in products:
+            del products[pid]
+            print("Product Deleted Successfully!")
+        else:
+            print("Product Not Found!")
+
+    elif choice == "5":
+        break
+
+    else:
+        print("Invalid Choice!")
+
+
+
+
+print("\nQ9:Write student data into a text file")
+try:
+    with open("students.txt", "w") as file:
+        n = int(input("Enter Number of Students: "))
+
+        for i in range(n):
+            name = input("Enter Student Name: ")
+            marks = input("Enter Marks: ")
+
+            file.write(name + "," + marks + "\n")
+
+    print("Data Saved Successfully!")
+
+    # Read data from file
+    with open("students.txt", "r") as file:
+        print("\nStudent Records:")
+
+        for line in file:
+            print(line.strip())
+
+except (ValueError, OSError) as e:
+    print("Error:", e)
+
+
+
+
+print("\nQ10:CRUD operations using file handling")
+
+filename = "records.txt"
+
+def add_record():
+    with open(filename, "a") as file:
+        roll = input("Enter Roll Number: ")
+        name = input("Enter Name: ")
+        marks = input("Enter Marks: ")
+
+        file.write(roll + "," + name + "," + marks + "\n")
+
+    print("Record Added Successfully!")
+
+def view_records():
+    try:
+        with open(filename, "r") as file:
+            print("\nAll Records:")
+
+            for line in file:
+                print(line.strip())
+
+    except FileNotFoundError:
+        print("File Not Found!")
+
+def update_record():
+    roll = input("Enter Roll Number to Update: ")
+    records = []
+    found = False
+
+    try:
+        with open(filename, "r") as file:
+            records = file.readlines()
+
+        with open(filename, "w") as file:
+            for line in records:
+                data = line.strip().split(",")
+
+                if data[0] == roll:
+                    name = input("Enter New Name: ")
+                    marks = input("Enter New Marks: ")
+                    file.write(roll + "," + name + "," + marks + "\n")
+                    found = True
+                else:
+                    file.write(line)
+
+        if found:
+            print("Record Updated Successfully!")
+        else:
+            print("Record Not Found!")
+
+    except FileNotFoundError:
+        print("File Not Found!")
+
+def delete_record():
+    roll = input("Enter Roll Number to Delete: ")
+    found = False
+
+    try:
+        with open(filename, "r") as file:
+            records = file.readlines()
+
+        with open(filename, "w") as file:
+            for line in records:
+                data = line.strip().split(",")
+
+                if data[0] == roll:
+                    found = True
+                else:
+                    file.write(line)
+
+        if found:
+            print("Record Deleted Successfully!")
+        else:
+            print("Record Not Found!")
+
+    except FileNotFoundError:
+        print("File Not Found!")
+
+while True:
+    print("\n1. Add Record")
+    print("2. View Records")
+    print("3. Update Record")
+    print("4. Delete Record")
+    print("5. Exit")
+
+    choice = input("Enter Choice: ")
+
+    try:
+        if choice == "1":
+            add_record()
+        elif choice == "2":
+            view_records()
+        elif choice == "3":
+            update_record()
+        elif choice == "4":
+            delete_record()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid Choice!")
+
+    except OSError as e:
+        print("File Error:", e)
+
+
+
+
+print("\nQ11:Connect to SQLite database and create table")
+
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS students (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            age INTEGER,
+            marks REAL
+        )
+    """)
+
+    con.commit()
+
+    print("Database Connected Successfully!")
+    print("Students Table Created Successfully!")
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+
+print("\nQ12: Insert student record into database")
+
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS students (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            age INTEGER,
+            marks REAL
+        )
+    """)
+
+    roll = int(input("Enter Roll Number: "))
+    name = input("Enter Student Name: ")
+    age = int(input("Enter Age: "))
+    marks = float(input("Enter Marks: "))
+
+    cur.execute(
+        "INSERT INTO students VALUES (?, ?, ?, ?)",
+        (roll, name, age, marks)
+    )
+
+    con.commit()
+
+    print("Student Record Inserted Successfully!")
+
+except (sqlite3.Error, ValueError) as e:
+    print("Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+
+print("\nQ13:Display all student records")
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute("SELECT * FROM students")
+
+    records = cur.fetchall()
+
+    print("All Student Records:")
+
+    if records:
+        for row in records:
+            print(row)
+    else:
+        print("No Records Found!")
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+print("\nQ14:Search student using roll number")
+
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    roll = int(input("Enter Roll Number to Search: "))
+
+    cur.execute(
+        "SELECT * FROM students WHERE id = ?",
+        (roll,)
+    )
+
+    record = cur.fetchone()
+
+    if record:
+        print("Student Found!")
+        print(record)
+    else:
+        print("Student Not Found!")
+
+except (sqlite3.Error, ValueError) as e:
+    print("Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+print("\nQ15:Update student marks")
+
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    roll = int(input("Enter Roll Number: "))
+    marks = float(input("Enter New Marks: "))
+
+    cur.execute(
+        "UPDATE students SET marks = ? WHERE id = ?",
+        (marks, roll)
+    )
+
+    con.commit()
+
+    if cur.rowcount > 0:
+        print("Student Marks Updated Successfully!")
+    else:
+        print("Student Not Found!")
+
+except (sqlite3.Error, ValueError) as e:
+    print("Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+print("\nQ16:Delete student record from database")
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    roll = int(input("Enter Roll Number to Delete: "))
+
+    cur.execute(
+        "DELETE FROM students WHERE id = ?",
+        (roll,)
+    )
+
+    con.commit()
+
+    if cur.rowcount > 0:
+        print("Student Record Deleted Successfully!")
+    else:
+        print("Student Not Found!")
+
+except (sqlite3.Error, ValueError) as e:
+    print("Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+
+print("\nQ17:Count total student records")
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute("SELECT COUNT(*) FROM students")
+
+    total = cur.fetchone()[0]
+
+    print("Total Number of Students:", total)
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+
+print("\nQ18:Display student records in alphabetical order")
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute(
+        "SELECT * FROM students ORDER BY name ASC"
+    )
+
+    records = cur.fetchall()
+
+    print("Students Sorted By Name:")
+
+    for row in records:
+        print(row)
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+
+print("\nQ19:Find student with highest marks")
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    cur.execute("""
+        SELECT * FROM students
+        ORDER BY marks DESC
+        LIMIT 1
+    """)
+
+    student = cur.fetchone()
+
+    if student:
+        print("Student With Highest Marks:")
+        print(student)
+    else:
+        print("No Student Records Found!")
+
+except sqlite3.Error as e:
+    print("Database Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
+
+
+
+
+print("\nQ20: Complete CRUD application using SQLite")
+
+import sqlite3
+
+try:
+    con = sqlite3.connect("students.db")
+    cur = con.cursor()
+
+    # Create table
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS students (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            age INTEGER,
+            marks REAL
+        )
+    """)
+
+    con.commit()
+
+    while True:
+
+        print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+        print("1. Add Student")
+        print("2. View Students")
+        print("3. Search Student")
+        print("4. Update Student")
+        print("5. Delete Student")
+        print("6. Exit")
+
+        choice = input("Enter Your Choice: ")
+
+        try:
+
+            # Create Operation
+            if choice == "1":
+
+                roll = int(input("Enter Roll Number: "))
+                name = input("Enter Name: ")
+                age = int(input("Enter Age: "))
+                marks = float(input("Enter Marks: "))
+
+                cur.execute(
+                    "INSERT INTO students VALUES (?, ?, ?, ?)",
+                    (roll, name, age, marks)
+                )
+
+                con.commit()
+
+                print("Student Added Successfully!")
+
+            # Read Operation
+            elif choice == "2":
+
+                cur.execute("SELECT * FROM students")
+                records = cur.fetchall()
+
+                if records:
+                    print("\nAll Student Records:")
+                    for row in records:
+                        print(row)
+                else:
+                    print("No Records Found!")
+
+            # Search Operation
+            elif choice == "3":
+
+                roll = int(input("Enter Roll Number: "))
+
+                cur.execute(
+                    "SELECT * FROM students WHERE id = ?",
+                    (roll,)
+                )
+
+                record = cur.fetchone()
+
+                if record:
+                    print("Student Found:", record)
+                else:
+                    print("Student Not Found!")
+
+            # Update Operation
+            elif choice == "4":
+
+                roll = int(input("Enter Roll Number: "))
+                marks = float(input("Enter New Marks: "))
+
+                cur.execute(
+                    "UPDATE students SET marks = ? WHERE id = ?",
+                    (marks, roll)
+                )
+
+                con.commit()
+
+                if cur.rowcount > 0:
+                    print("Student Updated Successfully!")
+                else:
+                    print("Student Not Found!")
+
+            # Delete Operation
+            elif choice == "5":
+
+                roll = int(input("Enter Roll Number: "))
+
+                cur.execute(
+                    "DELETE FROM students WHERE id = ?",
+                    (roll,)
+                )
+
+                con.commit()
+
+                if cur.rowcount > 0:
+                    print("Student Deleted Successfully!")
+                else:
+                    print("Student Not Found!")
+
+            # Exit
+            elif choice == "6":
+
+                print("Thank You!")
+                break
+
+            else:
+                print("Invalid Choice! Try Again.")
+
+        except (ValueError, sqlite3.Error) as e:
+            con.rollback()
+            print("Operation Error:", e)
+
+except sqlite3.Error as e:
+    print("Database Connection Error:", e)
+
+finally:
+    if 'con' in locals():
+        con.close()
